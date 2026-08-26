@@ -1,0 +1,29 @@
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     constructor(val = 0, next = null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+
+class Solution {
+    /**
+     * @param {ListNode} head
+     * @return {boolean}
+     */
+    hasCycle(head: ListNode | null): boolean {
+        let slowPointer = head, fastPointer = head;
+
+        while (fastPointer !== null && fastPointer.next !== null) {
+            fastPointer = fastPointer.next.next;
+            slowPointer = slowPointer.next;
+
+            if (slowPointer === fastPointer) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
